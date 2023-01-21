@@ -22,6 +22,16 @@ janCsv <- as.data.frame(read.csv(file = "raw_data/january_data_c", encoding = "U
 View(decCsv)
 View(janCsv)
 
+###
+#To dodał Czarek
+#jak to zaaplikujesz na moich ramkach danych to powinno działać wyszukiwanie mojego domu :)
+decCsv <- decCsv %>% 
+  mutate(placeVisit_location_name = case_when(
+    (placeVisit_location_name == "" & placeVisit_location_address != "") ~ placeVisit_location_address,
+    TRUE ~ placeVisit_location_name
+  ))
+###
+
 filterDecCsv <- decCsv %>% 
   filter(placeVisit_location_name != "")
 
@@ -86,9 +96,9 @@ other <- c("biedronka", "stara", "lidl")
 
 View(filterData)
 #stringi Czarek
-home <- c("kazimierów", "willa", "repkowska", "sokołowska", "halinów")
+home <- c("kazimierów", "repkowska", "sokołowska", "halinów")
 uni <- c("gmach", "university")
-fun <- c("cybermachina", "gato", "kredens", "kuchnia", "manekin", "muzeum", "cafe", "restauracja")
+fun <- c("cybermachina", "gato", "kredens", "kuchnia", "manekin", "muzeum", "cafe", "restauracja", "willa")
 
 
 homes <- filterData[sapply(strsplit(filterData$name, split=" "), function(str) any(home %in% str)), ] %>% 
