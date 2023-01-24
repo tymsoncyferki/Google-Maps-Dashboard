@@ -76,17 +76,23 @@ info_ui <- fluidPage(
 
 map_ui <- fluidPage(
   
-  titlePanel("Map of visited places"),
+  fluidRow(
+    column(width = 1),
+    column(width = 11, 
+           titlePanel("Map of visited places"))),
+ 
   
   fluidRow(
-    column(width = 12, 
+    column(width = 1),
+    column(width = 11, 
     "Map of places we visited in a given date range. The bigger the circle, 
     the more visited.")),
   
   br(),
   
   fluidRow(
-    column(width = 4,
+    column(width = 1),
+    column(width = 3,
            wellPanel(checkboxGroupButtons(
              inputId = "persons",
              label = "Select persons:",
@@ -117,9 +123,9 @@ map_ui <- fluidPage(
            style = "text-align: justify;"
            
     ),
-    column(width = 8,
+    column(width = 7,
            shinycssloaders::withSpinner(
-             leafletOutput("placeMap", height = "500px"),
+             leafletOutput("placeMap", height = "550px"),
              color = "#2fa4e7"))
     
   ),
@@ -128,52 +134,59 @@ map_ui <- fluidPage(
 
 time_ui <- fluidPage(
   
-  titlePanel("Time spent"),
-  fluidRow(
-    column(width = 12, 
-           "Hours spent in places from certain category.")),
-  br(),
-  sidebarLayout(
-    sidebarPanel(
-      checkboxGroupButtons(
-        inputId = "osoby",
-        label = "Select persons:",
-        choices = c("Czarek", "Tymek", "Wojtek"),
-        selected = c("Czarek", "Tymek", "Wojtek"),
-        individual = TRUE,
-        status = c("primary", "secondary" , "success")
-        
-      ),
-      selectInput("typ", 
-                  "Select category:",
-                  choices = c("University",
-                              "Home",
-                              "Entertainment",
-                              "Other"
-                  )),
-      dateInput(
-        "tydzien",
-        "Choose week:",
-        min = "2022-12-12",
-        max = "2023-01-03",
-        value = "2022-12-13",
-        format = "yyyy-mm-dd",
-        startview = "month",
-        weekstart = 1,
-        language = "en"
-      )),
-    
-    mainPanel(
-      shinycssloaders::withSpinner(
-        plotOutput("linePlot"),
-        color = "#2fa4e7")
-    ),
-  ),
-  fluidRow(
-    br(),
-    column(width = 2),
-    column(width = 8, 
-           "The presented graph shows the duration of activities at home, university and entertainment.
+fluidRow(
+  column(width = 1),
+  column(width = 11, 
+         titlePanel("Time spent"))),
+fluidRow(
+  column(width = 1),
+  column(width = 11, 
+         "Hours spent in places from certain category.")),
+br(),
+
+fluidRow(
+  column(width = 1),
+  column(width = 3,
+         wellPanel(
+           fluidRow(
+           checkboxGroupButtons(
+             inputId = "osoby",
+             label = "Select persons:",
+             choices = c("Czarek", "Tymek", "Wojtek"),
+             selected = c("Czarek", "Tymek", "Wojtek"),
+             individual = TRUE,
+             status = c("primary", "secondary" , "success")
+             )
+           ),
+           fluidRow(
+             column(width = 6,
+                    selectInput(
+                      "typ", 
+                      "Select category:",
+                      choices = c("University",
+                                  "Home",
+                                  "Entertainment",
+                                  "Other")
+                    )
+                ),
+            column(width = 6,
+                   dateInput(
+                     "tydzien",
+                     "Choose week:",
+                     min = "2022-12-12",
+                     max = "2023-01-03",
+                     value = "2022-12-13",
+                     format = "yyyy-mm-dd",
+                     startview = "month",
+                     weekstart = 1,
+                     language = "en"
+                   )
+              ),
+           
+           )
+         ),
+         br(),
+         "The presented graph shows the duration of activities at home, university and entertainment.
            Thanks to the colored lines user can match each line to a particular person.
            After choosing a date from the calendar, the graph always presents the week with the chosen day.
            Each week presented by the graph starts on Monday.
@@ -181,8 +194,14 @@ time_ui <- fluidPage(
            spend more time at university than Czarek. 
            It turned out that only Czarek and Wojtek have spent New Year’s Eve partying.
            However, on a daily basis no one can compete with Tymek when it comes to entertainment time.",
-           style = "text-align: center;"),
-    column(width = 2))
+         style = "text-align: justify;"
+      ),
+  column(width = 7,
+         shinycssloaders::withSpinner(
+            plotOutput("linePlot", height = "500px"),
+            color = "#2fa4e7")),
+  column(width = 1)
+  )
 )
 
 trans_ui <- fluidPage(
@@ -264,7 +283,7 @@ server <- function(input, output) {
     trans_df$weekDay <- factor(trans_df$weekDay, levels = c("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"))
     trans_df %>% 
       filter(date >= input$date_range_trans[1] & date <= input$date_range_trans[2]) %>%
-      filter(type %in% input$transport1) %>%
+      filter(type %in% cbind(input$transport1, input$transport2)) %>%
       mutate(distance = distance/1000) %>%
       group_by(weekDay, name) %>% 
       summarise(sumKilo = sum(distance)) %>% 
