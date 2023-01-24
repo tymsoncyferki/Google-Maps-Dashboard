@@ -189,21 +189,21 @@ trans_ui <- fluidPage(
   
   
   fluidRow(
-    column(width = 2),
-    column(width = 10, 
+    column(width = 1),
+    column(width = 11, 
            titlePanel("Transport"))),
   fluidRow(
-    column(width = 2),
-    column(width = 10, 
+    column(width = 1),
+    column(width = 11, 
            "Sum of kilometers we travelled during the weekday.")),
   br(),
   
   fluidRow(
-    column(width = 2),
-    column(width = 4,
+    column(width = 1),
+    column(width = 5,
            wellPanel(
              fluidRow(
-               column(width = 6,
+               column(width = 12,
                       "Select modes of transport:")),
              fluidRow(
                column(width = 3,
@@ -223,7 +223,7 @@ trans_ui <- fluidPage(
                             format = "yyyy-mm-dd", startview = "month",
                             autoclose = TRUE),
            )),
-    column(width = 4,
+    column(width = 5,
            "In this interactive plot we can easily compare how do we move around
            on a daily basis or during x-mas holidays.
            There are some obvious categories related to public transport,
@@ -239,15 +239,15 @@ trans_ui <- fluidPage(
            It might be noted that nobody was travelling by subway at that time.
            For more details try to play with it yourself!",
            style = "text-align: justify;"),
-    column(width = 2)
+    column(width = 1)
   ),
   fluidRow(
-    column(width = 2),
-    column(width = 8,
+    column(width = 1),
+    column(width = 10,
            shinycssloaders::withSpinner(
              plotOutput("barPlot"),
              color = "#2fa4e7")),
-    column(width = 2)
+    column(width = 1)
   ),
 )
 
