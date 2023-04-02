@@ -13,3 +13,6 @@ App link: https://tymsoncyferki.shinyapps.io/project_maps/
 
 ![Photo 1](https://github.com/tymsoncyferki/TWD-Google-Maps-Dashboard/blob/main/README_files/Opera%20Snapshot_2023-04-02_204027_tymsoncyferki.shinyapps.io.png)
 ![Photo 2](https://github.com/tymsoncyferki/TWD-Google-Maps-Dashboard/blob/main/README_files/Opera%20Snapshot_2023-04-02_204053_tymsoncyferki.shinyapps.io.png)
+![Photo 3](https://github.com/tymsoncyferki/TWD-Google-Maps-Dashboard/blob/main/README_files/Opera%20Snapshot_2023-04-02_204108_tymsoncyferki.shinyapps.io.png)
+![Photo 4](https://github.com/tymsoncyferki/TWD-Google-Maps-Dashboard/blob/main/README_files/Opera%20Snapshot_2023-04-02_204117_tymsoncyferki.shinyapps.io.png)
+![Photo 5](https://github.com/tymsoncyferki/TWD-Google-Maps-Dashboard/blob/main/README_files/Opera%20Snapshot_2023-04-02_204128_tymsoncyferki.shinyapps.io.png)
