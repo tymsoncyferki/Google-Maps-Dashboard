@@ -398,11 +398,6 @@ server <- function(input, output) {
       )
   })
   
-  #Strona główna
-  shinyjs::onclick("image_tymek", function(){
-    window.open("https://google.com", "_blank")
-  })
-  
   #Czesc Czarek
   output$barPlot <- renderPlot({
     trans_df$weekDay <- factor(trans_df$weekDay, levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
@@ -480,9 +475,6 @@ server <- function(input, output) {
         weekday==6~"Saturday",
         weekday==7~"Sunday"
       ))
-    
-    
-    
     
     plot <- ggplot(data = graphData, aes(x=weekday, y=hours, group = person, color = person)) +
       geom_line() + 
