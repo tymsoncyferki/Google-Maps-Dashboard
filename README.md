@@ -4,7 +4,8 @@ This project was made for Data Visualization Techniques
 course. Our task was to create a dashboard with visualizations
 of our internet activity. We have focused on our google maps data.
 
-## Collaborators:
+## Authors:
+[Tymoteusz Urban](https://github.com/tymsoncyferki)<br>
 [Wojciech Michaluk](https://github.com/wojo501)<br>
 [Cezary Rybak](https://github.com/CCzarek)<br>
 
