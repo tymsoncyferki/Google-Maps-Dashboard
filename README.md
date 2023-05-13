@@ -10,7 +10,7 @@ of our internet activity. We have focused on our google maps data.
 [Cezary Rybak](https://github.com/CCzarek)<br>
 
 ## App
-App link: tymsoncyferki.shinyapps.io/project_maps/
+App link: https://tymsoncyferki.shinyapps.io/project_maps/
 
 ![Photo 1](https://github.com/tymsoncyferki/TWD-Google-Maps-Dashboard/blob/main/README_files/Opera%20Snapshot_2023-04-02_204027_tymsoncyferki.shinyapps.io.png)
 ![Photo 2](https://github.com/tymsoncyferki/TWD-Google-Maps-Dashboard/blob/main/README_files/Opera%20Snapshot_2023-04-02_204053_tymsoncyferki.shinyapps.io.png)
